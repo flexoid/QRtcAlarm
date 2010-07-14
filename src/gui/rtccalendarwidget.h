@@ -54,6 +54,8 @@ protected:
 
 private:
     static const Qt::GlobalColor markColor = Qt::red;
+    QDate markedDate;
+    QTextCharFormat defaultFormat;
 
 signals:
      void alarmDateChanged(QDate date);
