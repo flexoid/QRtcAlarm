@@ -37,6 +37,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPropertyAnimation>
+#include "../core/rtc.h"
 
 namespace Ui {
     class MainWindow;
@@ -55,6 +57,13 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void updateAlarmTime();
+    void goToAlarmDate();
+    void goToToday();
+    void showSettings(bool visible);
+    void setAlarmTime();
 
 };
 

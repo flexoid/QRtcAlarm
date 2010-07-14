@@ -41,6 +41,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->layout()->setSizeConstraint(QLayout::SetFixedSize);
+    ui->settingsBox->hide();
+
+    updateAlarmTime();
+    connect(ui->goToAlarmButton, SIGNAL(clicked()), this, SLOT(goToAlarmDate()));
+    connect(ui->goToTodayButton, SIGNAL(clicked()), this, SLOT(goToToday()));
+    connect(ui->settingsButton, SIGNAL(toggled(bool)), this, SLOT(showSettings(bool)));
+    connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(updateAlarmTime()));
+    connect(ui->calendarWidget, SIGNAL(clicked(QDate)), ui->dateTimeEdit, SLOT(setDate(QDate)));
+    connect(ui->dateTimeEdit, SIGNAL(dateChanged(QDate)), ui->calendarWidget, SLOT(setSelectedDate(QDate)));
+    connect(ui->setAlarmTimeButton, SIGNAL(clicked()), this, SLOT(setAlarmTime()));
 }
 
 MainWindow::~MainWindow()
@@ -57,5 +68,53 @@ void MainWindow::changeEvent(QEvent *e)
         break;
     default:
         break;
+    }
+}
+
+void MainWindow::updateAlarmTime()
+{
+    Rtc* rtc = Rtc::instance();
+    QDateTime alarmTime;
+    if (rtc->getAlarmTime(alarmTime) == 0)
+    {
+        ui->dateTimeEdit->setDateTime(alarmTime);
+        ui->calendarWidget->setSelectedDate(alarmTime.date());
+        ui->calendarWidget->markAlarmDate(alarmTime.date());
+
+        ui->stateLabel->setText(tr("%1 Alarm is set %2").arg("<font color=green>").arg("</font>"));
+        ui->goToAlarmButton->setEnabled(true);
+    }
+    else
+    {
+        ui->stateLabel->setText(tr("%1 Alarm isn't set %2").arg("<font color=red>").arg("</font>"));
+        ui->goToAlarmButton->setEnabled(false);
+    }
+}
+
+void MainWindow::goToAlarmDate()
+{
+    QDate alarmDate = ui->calendarWidget->getMarkedDate();
+    ui->calendarWidget->setCurrentPage(alarmDate.year(), alarmDate.month());
+}
+
+void MainWindow::goToToday()
+{
+    QDate currentDate = QDate::currentDate();
+    ui->calendarWidget->setCurrentPage(currentDate.year(), currentDate.month());
+}
+
+void MainWindow::showSettings(bool visible)
+{
+    //TODO: Animation
+
+    ui->settingsBox->setVisible(visible);
+}
+
+void MainWindow::setAlarmTime()
+{
+    Rtc* rtc = Rtc::instance();
+    if (rtc->setAlarmTime(ui->dateTimeEdit->dateTime()) == 0)
+    {
+        updateAlarmTime();
     }
 }
