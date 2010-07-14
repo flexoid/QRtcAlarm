@@ -51,36 +51,8 @@ int main(int argc, char *argv[])
         app.installTranslator(&translator);
     }
 
-
-    /* MainWindow mainWin;
+    MainWindow mainWin;
     mainWin.show();
-    return a.exec(); */
+    return app.exec();
 
-    Rtc* rtc = Rtc::instance();
-
-    rtc->setTimeSpec(Qt::UTC); // Varies from user to user
-
-    QDateTime alarmDateTime;
-    if (rtc->getAlarmTime(alarmDateTime) == 0)
-    {
-        qDebug() << "Alarm is set for: " << alarmDateTime.toString("dd.MM.yyyy hh:mm.");
-    }
-    else
-    {
-        qDebug() << rtc->errorString();
-        if (rtc->error() == Rtc::AlarmIsNotSet)
-        {
-            qDebug() << "Setting new alarm time for tomorrow, same time.";
-            if (rtc->setAlarmTime(QDateTime::currentDateTime().addDays(1)) == 0)
-            {
-                qDebug() << "Successfull.";
-            }
-            else
-            {
-                qDebug() << rtc->errorString();
-            }
-        }
-    }
-
-    return 0;
 }
