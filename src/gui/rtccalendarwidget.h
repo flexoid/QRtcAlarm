@@ -45,6 +45,7 @@ class RtcCalendarWidget : public QCalendarWidget
     Q_OBJECT
 public:
     RtcCalendarWidget(QWidget *parent = 0);
+    QDate getMarkedDate();
 
 public slots:
     void markAlarmDate(QDate date);

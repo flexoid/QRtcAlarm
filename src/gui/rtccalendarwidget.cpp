@@ -61,3 +61,8 @@ void RtcCalendarWidget::paintCell(QPainter *painter, const QRect &rect, const QD
 {
     QCalendarWidget::paintCell(painter, rect, date);
 }
+
+QDate RtcCalendarWidget::getMarkedDate()
+{
+    return markedDate;
+}
