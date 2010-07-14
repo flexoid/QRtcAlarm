@@ -45,6 +45,7 @@ class RtcCalendarWidget : public QCalendarWidget
     Q_OBJECT
 public:
     RtcCalendarWidget(QWidget *parent = 0);
+    QDate getMarkedDate();
 
 public slots:
     void markAlarmDate(QDate date);
@@ -54,6 +55,8 @@ protected:
 
 private:
     static const Qt::GlobalColor markColor = Qt::red;
+    QDate markedDate;
+    QTextCharFormat defaultFormat;
 
 signals:
      void alarmDateChanged(QDate date);
