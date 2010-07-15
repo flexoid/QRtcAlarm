@@ -1,6 +1,7 @@
 Steps to build and run:	
 
-   $ cd src
+   $ git clone git://gitorious.org/qrtcalarm/qrtcalarm.git qrtcalarm
+   $ cd qrtcalarm/src
    $ cmake .
    $ make
    # ../bin/qrtcalarm (require administrator privileges)
