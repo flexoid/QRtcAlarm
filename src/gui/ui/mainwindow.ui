@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>432</width>
+    <width>454</width>
     <height>383</height>
    </rect>
   </property>
@@ -82,7 +82,7 @@
       <item row="4" column="0">
        <widget class="QPushButton" name="goToAlarmButton">
         <property name="text">
-         <string>Go to alarm date</string>
+         <string>Go to alarm month</string>
         </property>
        </widget>
       </item>
@@ -102,7 +102,7 @@
       <item row="5" column="0">
        <widget class="QPushButton" name="goToTodayButton">
         <property name="text">
-         <string>Go to today</string>
+         <string>Go to current month</string>
         </property>
        </widget>
       </item>
@@ -208,7 +208,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>432</width>
+     <width>454</width>
      <height>23</height>
     </rect>
    </property>

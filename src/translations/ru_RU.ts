@@ -5,9 +5,8 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="85"/>
         <source>Go to alarm date</source>
-        <translation>Перейти к сигналу</translation>
+        <translation type="obsolete">Перейти к сигналу</translation>
     </message>
     <message>
         <location filename="../gui/ui/mainwindow.ui" line="115"/>
@@ -20,6 +19,16 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="../gui/ui/mainwindow.ui" line="85"/>
+        <source>Go to alarm month</source>
+        <translation>Перейти к месяцу сигнала</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui/mainwindow.ui" line="105"/>
+        <source>Go to current month</source>
+        <translation>Перейти к текущему месяцу</translation>
+    </message>
+    <message>
         <location filename="../gui/ui/mainwindow.ui" line="125"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
@@ -30,9 +39,8 @@
         <translation>&amp;Установить время сигнала</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="105"/>
         <source>Go to today</source>
-        <translation>Перейти на сегодня</translation>
+        <translation type="obsolete">Перейти на сегодня</translation>
     </message>
     <message>
         <location filename="../gui/ui/mainwindow.ui" line="190"/>
