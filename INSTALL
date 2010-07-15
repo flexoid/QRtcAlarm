@@ -1,0 +1,6 @@
+Steps to build and run:	
+
+   $ cd src
+   $ cmake .
+   $ make
+   # ../bin/qrtcalarm (require administrator privileges)
