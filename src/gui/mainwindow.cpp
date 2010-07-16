@@ -43,15 +43,27 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->layout()->setSizeConstraint(QLayout::SetFixedSize);
     ui->settingsBox->hide();
+    ui->logBox->hide();
 
     updateAlarmTime();
     connect(ui->goToAlarmButton, SIGNAL(clicked()), this, SLOT(goToAlarmDate()));
     connect(ui->goToTodayButton, SIGNAL(clicked()), this, SLOT(goToToday()));
+
     connect(ui->settingsButton, SIGNAL(toggled(bool)), this, SLOT(showSettings(bool)));
+    connect(ui->showLogButton, SIGNAL(toggled(bool)), this, SLOT(showLog(bool)));
+
     connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(updateAlarmTime()));
     connect(ui->calendarWidget, SIGNAL(clicked(QDate)), ui->dateTimeEdit, SLOT(setDate(QDate)));
     connect(ui->dateTimeEdit, SIGNAL(dateChanged(QDate)), ui->calendarWidget, SLOT(setSelectedDate(QDate)));
     connect(ui->setAlarmTimeButton, SIGNAL(clicked()), this, SLOT(setAlarmTime()));
+
+    connect(ui->logListWidget->model(), SIGNAL(rowsInserted(const QModelIndex &, int, int)),
+            ui->logListWidget, SLOT(scrollToBottom())); //Autoscrolling
+
+    connect(ui->logListWidget->model(), SIGNAL(rowsInserted(const QModelIndex &, int, int)),
+            ui->logBox, SLOT(show())); //Show log when first log message arrived
+
+    connect(ui->cleanLogButton, SIGNAL(clicked()), ui->logListWidget, SLOT(clear())); //Clear the log
 }
 
 MainWindow::~MainWindow()
@@ -110,11 +122,24 @@ void MainWindow::showSettings(bool visible)
     ui->settingsBox->setVisible(visible);
 }
 
+void MainWindow::showLog(bool visible)
+{
+    //TODO: Animation
+
+    ui->logBox->setVisible(visible);
+}
+
 void MainWindow::setAlarmTime()
 {
     Rtc* rtc = Rtc::instance();
-    if (rtc->setAlarmTime(ui->dateTimeEdit->dateTime()) == 0)
+    int err = rtc->setAlarmTime(ui->dateTimeEdit->dateTime());
+    if (err == 0)
     {
         updateAlarmTime();
+    }
+    else
+    {
+        QListWidgetItem* item = new QListWidgetItem(ui->logListWidget);
+        item->setText(rtc->errorString());
     }
 }
