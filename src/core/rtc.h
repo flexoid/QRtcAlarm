@@ -64,7 +64,8 @@ public:
         WakealarmFileDoesntWritable,
         AlarmIsNotSet,
         IsNotWritten,
-        InvalidTimeMode
+        InvalidTimeMode,
+        TimeInThePast
     };
 
     static Rtc* instance()
