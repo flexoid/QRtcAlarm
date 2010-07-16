@@ -72,12 +72,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.cpp" line="96"/>
+        <location filename="../gui/mainwindow.cpp" line="97"/>
         <source>%1 Alarm is set %2</source>
         <translation>%1 Сигнал установлен %2</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.cpp" line="101"/>
+        <location filename="../gui/mainwindow.cpp" line="104"/>
         <source>%1 Alarm isn&apos;t set %2</source>
         <translation>%1 Сигнал не установлен %2</translation>
     </message>
@@ -88,7 +88,7 @@
         <location filename="../core/rtc.cpp" line="54"/>
         <location filename="../core/rtc.cpp" line="115"/>
         <source>File %1 doesn&apos;t exist.</source>
-        <translation>Файл %1 не создан.</translation>
+        <translation>Файл %1 не существует.</translation>
     </message>
     <message>
         <location filename="../core/rtc.cpp" line="61"/>
