@@ -49,8 +49,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->goToAlarmButton, SIGNAL(clicked()), this, SLOT(goToAlarmDate()));
     connect(ui->goToTodayButton, SIGNAL(clicked()), this, SLOT(goToToday()));
 
-    connect(ui->settingsButton, SIGNAL(toggled(bool)), this, SLOT(showSettings(bool)));
-    connect(ui->showLogButton, SIGNAL(toggled(bool)), this, SLOT(showLog(bool)));
+    connect(ui->settingsButton, SIGNAL(toggled(bool)), this, SLOT(setVisibleSettings(bool)));
+    connect(ui->logButton, SIGNAL(toggled(bool)), this, SLOT(setVisibleLog(bool)));
 
     connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(updateAlarmTime()));
     connect(ui->calendarWidget, SIGNAL(clicked(QDate)), ui->dateTimeEdit, SLOT(setDate(QDate)));
@@ -61,7 +61,7 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->logListWidget, SLOT(scrollToBottom())); //Autoscrolling
 
     connect(ui->logListWidget->model(), SIGNAL(rowsInserted(const QModelIndex &, int, int)),
-            ui->logBox, SLOT(show())); //Show log when first log message arrived
+            this, SLOT(showLog())); //Show log when first log message arrived
 
     connect(ui->cleanLogButton, SIGNAL(clicked()), ui->logListWidget, SLOT(clear())); //Clear the log
 }
@@ -115,18 +115,27 @@ void MainWindow::goToToday()
     ui->calendarWidget->setCurrentPage(currentDate.year(), currentDate.month());
 }
 
-void MainWindow::showSettings(bool visible)
+void MainWindow::setVisibleSettings(bool visible)
 {
     //TODO: Animation
 
     ui->settingsBox->setVisible(visible);
 }
 
-void MainWindow::showLog(bool visible)
+void MainWindow::setVisibleLog(bool visible)
 {
     //TODO: Animation
 
     ui->logBox->setVisible(visible);
+}
+
+void MainWindow::showLog()
+{
+    ui->logBox->show();
+    if (!ui->logButton->isChecked())
+    {
+        ui->logButton->toggle();
+    }
 }
 
 void MainWindow::setAlarmTime()

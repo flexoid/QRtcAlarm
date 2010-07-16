@@ -62,8 +62,9 @@ private slots:
     void updateAlarmTime();
     void goToAlarmDate();
     void goToToday();
-    void showSettings(bool visible);
-    void showLog(bool visible);
+    void setVisibleSettings(bool visible);
+    void setVisibleLog(bool visible);
+    void showLog();
     void setAlarmTime();
 
 };

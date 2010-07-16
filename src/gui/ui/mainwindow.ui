@@ -142,9 +142,9 @@
       <item row="5" column="3">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QPushButton" name="showLogButton">
+         <widget class="QPushButton" name="logButton">
           <property name="text">
-           <string>Show log</string>
+           <string>Log window</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
