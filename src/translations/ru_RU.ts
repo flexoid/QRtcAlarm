@@ -25,11 +25,6 @@
         <translation>Перейти к текущему месяцу</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="147"/>
-        <source>Show log</source>
-        <translation>Показать лог</translation>
-    </message>
-    <message>
         <location filename="../gui/ui/mainwindow.ui" line="160"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
@@ -48,6 +43,11 @@
         <location filename="../gui/ui/mainwindow.ui" line="174"/>
         <source>Settings</source>
         <translation>Настройки</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui/mainwindow.ui" line="147"/>
+        <source>Log window</source>
+        <translation>Окно лога</translation>
     </message>
     <message>
         <location filename="../gui/ui/mainwindow.ui" line="224"/>
