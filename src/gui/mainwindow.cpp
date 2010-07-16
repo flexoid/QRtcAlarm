@@ -45,7 +45,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->settingsBox->hide();
     ui->logBox->hide();
 
-    updateAlarmTime();
     connect(ui->goToAlarmButton, SIGNAL(clicked()), this, SLOT(goToAlarmDate()));
     connect(ui->goToTodayButton, SIGNAL(clicked()), this, SLOT(goToToday()));
 
@@ -64,6 +63,8 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(showLog())); //Show log when first log message arrived
 
     connect(ui->cleanLogButton, SIGNAL(clicked()), ui->logListWidget, SLOT(clear())); //Clear the log
+
+    updateAlarmTime();
 }
 
 MainWindow::~MainWindow()
@@ -98,8 +99,16 @@ void MainWindow::updateAlarmTime()
     }
     else
     {
-        ui->stateLabel->setText(tr("%1 Alarm isn't set %2").arg("<font color=red>").arg("</font>"));
-        ui->goToAlarmButton->setEnabled(false);
+        if (rtc->error() == Rtc::AlarmIsNotSet)
+        {
+            ui->stateLabel->setText(tr("%1 Alarm isn't set %2").arg("<font color=red>").arg("</font>"));
+            ui->goToAlarmButton->setEnabled(false);
+        }
+        else
+        {
+            QListWidgetItem* item = new QListWidgetItem(ui->logListWidget);
+            item->setText(rtc->errorString());
+        }
     }
 }
 
