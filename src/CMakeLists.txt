@@ -32,13 +32,6 @@ foreach (LANGUAGE ${LANGUAGES})
 		COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && ${QT_LRELEASE_EXECUTABLE} ${TS}
 		MAIN_DEPENDENCY ${TS})
 endforeach()
-# add_custom_target (
-#	translations 
-#	COMMAND ${QT_LUPDATE_EXECUTABLE} ${HEADERS} ${SOURCES} -ts ${TRANSLATIONS})
-# add_custom_command (
-#	TARGET translations
-#	COMMAND ${QT_LRELEASE_EXECUTABLE} ${TRANSLATIONS})
-
 
 foreach (LIBRARY ${LIBRARIES})
 	add_subdirectory (../${LIBRARY}/build bin/${LIBRARY})
