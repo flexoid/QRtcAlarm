@@ -42,19 +42,26 @@ RtcCalendarWidget::RtcCalendarWidget(QWidget *parent) : QCalendarWidget(parent)
 
 void RtcCalendarWidget::markAlarmDate(QDate date)
 {
-    if (markedDate.isValid())
-    {
-        setDateTextFormat(markedDate, defaultFormat);
-    }
+    unmarkAlarmDate();
+
     QBrush brush;
     QColor color(markColor);
     color.setAlpha(120);
     brush.setColor(color);
     QTextCharFormat cf = dateTextFormat(date);
+    defaultFormat = cf; //for unmark method
+    markedDate = date; // ^^^
     cf.setBackground(brush);
     setDateTextFormat(date, cf);
-    markedDate = date;
     emit alarmDateChanged(date);
+}
+
+void RtcCalendarWidget::unmarkAlarmDate()
+{
+    if (markedDate.isValid() && defaultFormat.isValid())
+    {
+        setDateTextFormat(markedDate, defaultFormat);
+    }
 }
 
 void RtcCalendarWidget::paintCell(QPainter *painter, const QRect &rect, const QDate &date) const

@@ -49,6 +49,7 @@ public:
 
 public slots:
     void markAlarmDate(QDate date);
+    void unmarkAlarmDate();
 
 protected:
     virtual void paintCell(QPainter *painter, const QRect &rect, const QDate &date) const;
