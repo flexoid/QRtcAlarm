@@ -39,8 +39,9 @@ Rtc* Rtc::_self = 0;
 
 Rtc::Rtc()
 {
-    timeSpec = Qt::UTC;
-    wakealarm_sysfile = QString::fromUtf8("/sys/class/rtc/rtc0/wakealarm");
+    QString rtc_root = QString::fromUtf8("/sys/class/rtc/rtc0/");
+    wakealarm_sysfile = rtc_root + QString::fromUtf8("wakealarm");
+    since_epoch_sysfile = rtc_root + QString::fromUtf8("since_epoch");
 }
 
 int Rtc::getAlarmTime(QDateTime& dateTime)
@@ -150,6 +151,37 @@ int Rtc::resetAlarmTime()
 {
     setAlarmTime(QVariant(0).toDateTime());
     return 0;
+}
+
+int Rtc::getSystemTimeSpec()
+{
+    QString output;
+    QFile since_epoch_file(since_epoch_sysfile);
+    since_epoch_file.open(QIODevice::ReadOnly);
+    if (!since_epoch_file.exists())
+    {
+        setError(Rtc::SinceEpochFileDoesntExist);
+        setErrorString(tr("File %1 doesn't exist.").arg(since_epoch_sysfile));
+        since_epoch_file.close();
+        return -1;
+    }
+    if (!since_epoch_file.isReadable())
+    {
+        setError(Rtc::SinceEpochFileDoesntReadable);
+        setErrorString(tr("Don't have permission to read %1 file.").arg(since_epoch_sysfile));
+        since_epoch_file.close();
+        return -1;
+    }
+    output = QVariant(since_epoch_file.readAll()).toString();
+    since_epoch_file.close();
+    uint time_t = QVariant(output).toUInt();
+
+    cleanLastError();
+
+    if (qAbs(static_cast< int >(time_t - QDateTime::currentDateTime().toTime_t())) <= 60) //infelicity
+        return Qt::UTC;
+    else
+        return Qt::LocalTime;
 }
 
 void Rtc::cleanLastError()

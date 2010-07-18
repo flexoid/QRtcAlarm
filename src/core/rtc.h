@@ -62,6 +62,8 @@ public:
         WakealarmFileDoesntExist,
         WakealarmFileDoesntReadable,
         WakealarmFileDoesntWritable,
+        SinceEpochFileDoesntExist,
+        SinceEpochFileDoesntReadable,
         AlarmIsNotSet,
         IsNotWritten,
         InvalidTimeMode,
@@ -79,6 +81,7 @@ public:
     int getAlarmTime(QDateTime& dateTime);
     int setAlarmTime(QDateTime dateTime);
     int resetAlarmTime();
+    int getSystemTimeSpec();
 
     rtcError error();
     QString errorString();
@@ -89,6 +92,7 @@ private:
     rtcError err;
     QString errString;
     QString wakealarm_sysfile;
+    QString since_epoch_sysfile;
 
     void cleanLastError();
     void setError(rtcError error);
