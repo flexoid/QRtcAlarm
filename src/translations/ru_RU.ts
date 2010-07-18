@@ -5,11 +5,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="115"/>
-        <source>&amp;Refresh</source>
-        <translation>&amp;Обновить</translation>
-    </message>
-    <message>
         <location filename="../gui/ui/mainwindow.ui" line="56"/>
         <source>dd.MM.yyyy HH:mm</source>
         <translation></translation>
@@ -25,59 +20,48 @@
         <translation>Перейти к текущему месяцу</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="160"/>
-        <source>&amp;Settings</source>
-        <translation>&amp;Настройки</translation>
-    </message>
-    <message>
-        <location filename="../gui/ui/mainwindow.ui" line="138"/>
-        <source>Set &amp;alarm time</source>
-        <translation>&amp;Установить время сигнала</translation>
-    </message>
-    <message>
-        <location filename="../gui/ui/mainwindow.ui" line="207"/>
-        <source>PushButton</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/ui/mainwindow.ui" line="174"/>
+        <location filename="../gui/ui/mainwindow.ui" line="153"/>
+        <location filename="../gui/ui/mainwindow.ui" line="181"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="147"/>
+        <location filename="../gui/ui/mainwindow.ui" line="115"/>
+        <source>Refresh</source>
+        <translation>Обновить</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui/mainwindow.ui" line="140"/>
         <source>Log window</source>
         <translation>Окно лога</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="224"/>
+        <location filename="../gui/ui/mainwindow.ui" line="172"/>
+        <source>Set alarm time</source>
+        <translation>Установить время сигнала</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui/mainwindow.ui" line="245"/>
         <source>Log</source>
         <translation>Лог</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="230"/>
+        <location filename="../gui/ui/mainwindow.ui" line="251"/>
         <source>Clean</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="186"/>
-        <location filename="../gui/ui/mainwindow.ui" line="193"/>
-        <location filename="../gui/ui/mainwindow.ui" line="214"/>
-        <source>CheckBox</source>
-        <translation type="unfinished"></translation>
+        <location filename="../gui/ui/mainwindow.ui" line="165"/>
+        <source>Reset alarm</source>
+        <translation>Сбросить сигнал</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="200"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/mainwindow.cpp" line="97"/>
+        <location filename="../gui/mainwindow.cpp" line="99"/>
         <source>%1 Alarm is set %2</source>
         <translation>%1 Сигнал установлен %2</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.cpp" line="104"/>
+        <location filename="../gui/mainwindow.cpp" line="107"/>
         <source>%1 Alarm isn&apos;t set %2</source>
         <translation>%1 Сигнал не установлен %2</translation>
     </message>
@@ -116,7 +100,7 @@
         <translation>Недостаточно прав для записи в файл %1.</translation>
     </message>
     <message>
-        <location filename="../core/rtc.cpp" line="133"/>
+        <location filename="../core/rtc.cpp" line="140"/>
         <source>New time isn&apos;t written in %1.</source>
         <translation>Новаое время не было записано в %1.</translation>
     </message>

@@ -54,7 +54,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(updateAlarmTime()));
     connect(ui->calendarWidget, SIGNAL(clicked(QDate)), ui->dateTimeEdit, SLOT(setDate(QDate)));
     connect(ui->dateTimeEdit, SIGNAL(dateChanged(QDate)), ui->calendarWidget, SLOT(setSelectedDate(QDate)));
+
     connect(ui->setAlarmTimeButton, SIGNAL(clicked()), this, SLOT(setAlarmTime()));
+    connect(ui->resetAlarmButton, SIGNAL(clicked()), this, SLOT(resetAlarmTime()));
 
     connect(ui->logListWidget->model(), SIGNAL(rowsInserted(const QModelIndex &, int, int)),
             ui->logListWidget, SLOT(scrollToBottom())); //Autoscrolling
@@ -91,14 +93,15 @@ void MainWindow::updateAlarmTime()
     if (rtc->getAlarmTime(alarmTime) == 0)
     {
         ui->dateTimeEdit->setDateTime(alarmTime);
-        ui->calendarWidget->setSelectedDate(alarmTime.date());
         ui->calendarWidget->markAlarmDate(alarmTime.date());
+        goToAlarmDate();
 
         ui->stateLabel->setText(tr("%1 Alarm is set %2").arg("<font color=green>").arg("</font>"));
         ui->goToAlarmButton->setEnabled(true);
     }
     else
     {
+        ui->calendarWidget->unmarkAlarmDate();
         if (rtc->error() == Rtc::AlarmIsNotSet)
         {
             ui->stateLabel->setText(tr("%1 Alarm isn't set %2").arg("<font color=red>").arg("</font>"));
@@ -151,6 +154,21 @@ void MainWindow::setAlarmTime()
 {
     Rtc* rtc = Rtc::instance();
     int err = rtc->setAlarmTime(ui->dateTimeEdit->dateTime());
+    if (err == 0)
+    {
+        updateAlarmTime();
+    }
+    else
+    {
+        QListWidgetItem* item = new QListWidgetItem(ui->logListWidget);
+        item->setText(rtc->errorString());
+    }
+}
+void MainWindow::resetAlarmTime()
+{
+
+    Rtc* rtc = Rtc::instance();
+    int err = rtc->resetAlarmTime();
     if (err == 0)
     {
         updateAlarmTime();

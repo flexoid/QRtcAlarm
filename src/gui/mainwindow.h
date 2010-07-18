@@ -66,6 +66,7 @@ private slots:
     void setVisibleLog(bool visible);
     void showLog();
     void setAlarmTime();
+    void resetAlarmTime();
 
 };
 
