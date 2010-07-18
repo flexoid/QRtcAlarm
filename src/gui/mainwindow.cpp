@@ -66,6 +66,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->cleanLogButton, SIGNAL(clicked()), ui->logListWidget, SLOT(clear())); //Clear the log
 
+    Rtc* rtc = Rtc::instance();
+    switch (rtc->getSystemTimeSpec())
+    {
+    case 0:
+        rtc->setTimeSpec(Qt::LocalTime); break;
+    case 1:
+        rtc->setTimeSpec(Qt::UTC); break;
+    default:
+        {
+            QListWidgetItem* item = new QListWidgetItem(ui->logListWidget);
+            item->setText(rtc->errorString());
+        }
+    }
+
     updateAlarmTime();
 }
 
