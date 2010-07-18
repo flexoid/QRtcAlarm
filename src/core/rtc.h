@@ -78,6 +78,7 @@ public:
     Qt::TimeSpec getTimeSpec();
     int getAlarmTime(QDateTime& dateTime);
     int setAlarmTime(QDateTime dateTime);
+    int resetAlarmTime();
 
     rtcError error();
     QString errorString();

@@ -101,7 +101,7 @@ Qt::TimeSpec Rtc::getTimeSpec()
 
 int Rtc::setAlarmTime(QDateTime dateTime)
 {
-    if (dateTime < QDateTime::currentDateTime())
+    if (dateTime < QDateTime::currentDateTime() &&  !dateTime.isNull())
     {
         setError(Rtc::TimeInThePast);
         setErrorString(tr("The specified time is in the past."));
@@ -125,6 +125,13 @@ int Rtc::setAlarmTime(QDateTime dateTime)
     }
     wakealarm_file.write("0"); // Reset current alarm
     wakealarm_file.close();
+
+    if (dateTime.isNull()) //Alarm reseted
+    {
+        cleanLastError();
+        return 0;
+    }
+
     wakealarm_file.open(QIODevice::WriteOnly);
     int wr = wakealarm_file.write(QVariant(dateTime.toTime_t()).toByteArray());
     if (wr == -1)
@@ -136,6 +143,12 @@ int Rtc::setAlarmTime(QDateTime dateTime)
     }
     wakealarm_file.close();
     cleanLastError();
+    return 0;
+}
+
+int Rtc::resetAlarmTime()
+{
+    setAlarmTime(QVariant(0).toDateTime());
     return 0;
 }
 
