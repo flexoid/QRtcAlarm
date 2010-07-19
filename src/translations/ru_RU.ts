@@ -56,12 +56,17 @@
         <translation>Сбросить сигнал</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.cpp" line="113"/>
+        <location filename="../gui/mainwindow.cpp" line="83"/>
+        <source>For translators: just enter number of the first day of the week in the field of translation, where 1 is Monday and 7 is Sunday</source>
+        <translation>1</translation>
+    </message>
+    <message>
+        <location filename="../gui/mainwindow.cpp" line="119"/>
         <source>%1 Alarm is set %2</source>
         <translation>%1 Сигнал установлен %2</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.cpp" line="121"/>
+        <location filename="../gui/mainwindow.cpp" line="127"/>
         <source>%1 Alarm isn&apos;t set %2</source>
         <translation>%1 Сигнал не установлен %2</translation>
     </message>

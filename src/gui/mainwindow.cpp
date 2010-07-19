@@ -80,6 +80,12 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
 
+    int fDay =  trUtf8("For translators: just enter number of the first day of the week in the field of translation, where 1 is Monday and 7 is Sunday").toInt();
+    if (fDay)
+    {
+        ui->calendarWidget->setFirstDayOfWeek(static_cast< Qt::DayOfWeek>(fDay));
+    }
+
     updateAlarmTime();
 }
 
