@@ -122,6 +122,8 @@ void MainWindow::updateAlarmTime()
     else
     {
         ui->calendarWidget->unmarkAlarmDate();
+        ui->calendarWidget->setSelectedDate(QDate::currentDate());
+        ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
         if (rtc->error() == Rtc::AlarmIsNotSet)
         {
             ui->stateLabel->setText(tr("%1 Alarm isn't set %2").arg("<font color=red>").arg("</font>"));

@@ -5,23 +5,23 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="85"/>
+        <location filename="../gui/ui/mainwindow.ui" line="89"/>
         <source>Go to alarm month</source>
         <translation>Перейти к месяцу сигнала</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="105"/>
+        <location filename="../gui/ui/mainwindow.ui" line="109"/>
         <source>Go to current month</source>
         <translation>Перейти к текущему месяцу</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="153"/>
-        <location filename="../gui/ui/mainwindow.ui" line="181"/>
+        <location filename="../gui/ui/mainwindow.ui" line="157"/>
+        <location filename="../gui/ui/mainwindow.ui" line="185"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="115"/>
+        <location filename="../gui/ui/mainwindow.ui" line="119"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
@@ -31,27 +31,27 @@
         <translation>dd.MM.yyyy hh:mm</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="140"/>
+        <location filename="../gui/ui/mainwindow.ui" line="144"/>
         <source>Log window</source>
         <translation>Окно лога</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="172"/>
+        <location filename="../gui/ui/mainwindow.ui" line="176"/>
         <source>Set alarm time</source>
         <translation>Установить время сигнала</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="245"/>
+        <location filename="../gui/ui/mainwindow.ui" line="249"/>
         <source>Log</source>
         <translation>Лог</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="251"/>
+        <location filename="../gui/ui/mainwindow.ui" line="255"/>
         <source>Clean</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="165"/>
+        <location filename="../gui/ui/mainwindow.ui" line="169"/>
         <source>Reset alarm</source>
         <translation>Сбросить сигнал</translation>
     </message>
@@ -66,7 +66,7 @@
         <translation>%1 Сигнал установлен %2</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.cpp" line="127"/>
+        <location filename="../gui/mainwindow.cpp" line="129"/>
         <source>%1 Alarm isn&apos;t set %2</source>
         <translation>%1 Сигнал не установлен %2</translation>
     </message>
