@@ -50,10 +50,10 @@
       <item row="0" column="3">
        <widget class="QDateTimeEdit" name="dateTimeEdit">
         <property name="currentSection">
-         <enum>QDateTimeEdit::DaySection</enum>
+         <enum>QDateTimeEdit::YearSection</enum>
         </property>
         <property name="displayFormat">
-         <string>dd.MM.yyyy HH:mm</string>
+         <string>yyyy-MM-dd hh:mm</string>
         </property>
         <property name="calendarPopup">
          <bool>false</bool>
