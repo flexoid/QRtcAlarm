@@ -52,14 +52,14 @@ int Rtc::getAlarmTime(QDateTime& dateTime)
     if (!wakealarm_file.exists())
     {
         setError(Rtc::WakealarmFileDoesntExist);
-        setErrorString(tr("File %1 doesn't exist.").arg(wakealarm_sysfile));
+        setErrorString(trUtf8("File %1 doesn't exist.").arg(wakealarm_sysfile));
         wakealarm_file.close();
         return -1;
     }
     if (!wakealarm_file.isReadable())
     {
         setError(Rtc::WakealarmFileDoesntReadable);
-        setErrorString(tr("Don't have permission to read %1 file.").arg(wakealarm_sysfile));
+        setErrorString(trUtf8("Don't have permission to read %1 file.").arg(wakealarm_sysfile));
         wakealarm_file.close();
         return -1;
     }
@@ -69,7 +69,7 @@ int Rtc::getAlarmTime(QDateTime& dateTime)
     if (time_t <= 0)
     {
         setError(Rtc::AlarmIsNotSet);
-        setErrorString(tr("Alarm is not set or it is incorrect."));
+        setErrorString(trUtf8("Alarm is not set or it is incorrect."));
         return -1;
     }
     dateTime.setTime_t(time_t);
@@ -86,7 +86,7 @@ int Rtc::setTimeSpec(Qt::TimeSpec spec)
     if (spec != Qt::LocalTime && spec != Qt::UTC)
     {
         setError(Rtc::InvalidTimeMode);
-        setErrorString(tr("Invalid time spec."));
+        setErrorString(trUtf8("Invalid time spec."));
         return -1;
     }
     timeSpec = spec;
@@ -105,7 +105,7 @@ int Rtc::setAlarmTime(QDateTime dateTime)
     if (dateTime < QDateTime::currentDateTime() &&  !dateTime.isNull())
     {
         setError(Rtc::TimeInThePast);
-        setErrorString(tr("The specified time is in the past."));
+        setErrorString(trUtf8("The specified time is in the past."));
         return -1;
     }
     QFile wakealarm_file(wakealarm_sysfile);
@@ -113,14 +113,14 @@ int Rtc::setAlarmTime(QDateTime dateTime)
     if (!wakealarm_file.exists())
     {
         setError(Rtc::WakealarmFileDoesntExist);
-        setErrorString(tr("File %1 doesn't exist.").arg(wakealarm_sysfile));
+        setErrorString(trUtf8("File %1 doesn't exist.").arg(wakealarm_sysfile));
         wakealarm_file.close();
         return -1;
     }
     if (!wakealarm_file.isWritable())
     {
         setError(Rtc::WakealarmFileDoesntWritable);
-        setErrorString(tr("Don't have permission to write %1 file.").arg(wakealarm_sysfile));
+        setErrorString(trUtf8("Don't have permission to write %1 file.").arg(wakealarm_sysfile));
         wakealarm_file.close();
         return -1;
     }
@@ -138,7 +138,7 @@ int Rtc::setAlarmTime(QDateTime dateTime)
     if (wr == -1)
     {
         setError(Rtc::IsNotWritten);
-        setErrorString(tr("New time isn't written in %1.").arg(wakealarm_sysfile));
+        setErrorString(trUtf8("New time isn't written in %1.").arg(wakealarm_sysfile));
         wakealarm_file.close();
         return -1;
     }
@@ -161,14 +161,14 @@ int Rtc::getSystemTimeSpec()
     if (!since_epoch_file.exists())
     {
         setError(Rtc::SinceEpochFileDoesntExist);
-        setErrorString(tr("File %1 doesn't exist.").arg(since_epoch_sysfile));
+        setErrorString(trUtf8("File %1 doesn't exist.").arg(since_epoch_sysfile));
         since_epoch_file.close();
         return -1;
     }
     if (!since_epoch_file.isReadable())
     {
         setError(Rtc::SinceEpochFileDoesntReadable);
-        setErrorString(tr("Don't have permission to read %1 file.").arg(since_epoch_sysfile));
+        setErrorString(trUtf8("Don't have permission to read %1 file.").arg(since_epoch_sysfile));
         since_epoch_file.close();
         return -1;
     }

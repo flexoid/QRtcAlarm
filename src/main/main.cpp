@@ -43,7 +43,6 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
     QTranslator translator;
     if (translator.load(QString::fromUtf8(":/translations/") + QLocale::system().name()))
@@ -54,5 +53,4 @@ int main(int argc, char *argv[])
     MainWindow mainWin;
     mainWin.show();
     return app.exec();
-
 }
