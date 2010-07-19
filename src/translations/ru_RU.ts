@@ -5,11 +5,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../gui/ui/mainwindow.ui" line="56"/>
-        <source>dd.MM.yyyy HH:mm</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../gui/ui/mainwindow.ui" line="85"/>
         <source>Go to alarm month</source>
         <translation>Перейти к месяцу сигнала</translation>
@@ -29,6 +24,11 @@
         <location filename="../gui/ui/mainwindow.ui" line="115"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui/mainwindow.ui" line="56"/>
+        <source>yyyy-MM-dd hh:mm</source>
+        <translation>dd.MM.yyyy hh:mm</translation>
     </message>
     <message>
         <location filename="../gui/ui/mainwindow.ui" line="140"/>
