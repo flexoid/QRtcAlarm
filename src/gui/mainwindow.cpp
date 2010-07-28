@@ -42,7 +42,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->layout()->setSizeConstraint(QLayout::SetFixedSize);
-    ui->settingsBox->hide();
     ui->logBox->hide();
 
     createActions();
@@ -51,7 +50,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->goToAlarmButton, SIGNAL(clicked()), this, SLOT(goToAlarmDate()));
     connect(ui->goToTodayButton, SIGNAL(clicked()), this, SLOT(goToToday()));
 
-    connect(ui->settingsButton, SIGNAL(toggled(bool)), this, SLOT(setVisibleSettings(bool)));
     connect(ui->logButton, SIGNAL(toggled(bool)), this, SLOT(setVisibleLog(bool)));
 
     connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(updateAlarmTime()));
@@ -150,13 +148,6 @@ void MainWindow::goToToday()
 {
     QDate currentDate = QDate::currentDate();
     ui->calendarWidget->setCurrentPage(currentDate.year(), currentDate.month());
-}
-
-void MainWindow::setVisibleSettings(bool visible)
-{
-    //TODO: Animation
-
-    ui->settingsBox->setVisible(visible);
 }
 
 void MainWindow::setVisibleLog(bool visible)
