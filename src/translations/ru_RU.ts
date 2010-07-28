@@ -56,6 +56,28 @@
         <source>%1 Alarm isn&apos;t set %2</source>
         <translation>%1 Сигнал не установлен %2</translation>
     </message>
+    <message>
+        <source>&amp;About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About &amp;Qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QRtcAlarm
+
+Copyright (c) 2010 Egor Lynko</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Rtc</name>

@@ -45,6 +45,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->settingsBox->hide();
     ui->logBox->hide();
 
+    createActions();
+    createMenus();
+
     connect(ui->goToAlarmButton, SIGNAL(clicked()), this, SLOT(goToAlarmDate()));
     connect(ui->goToTodayButton, SIGNAL(clicked()), this, SLOT(goToToday()));
 
@@ -186,6 +189,7 @@ void MainWindow::setAlarmTime()
         item->setText(rtc->errorString());
     }
 }
+
 void MainWindow::resetAlarmTime()
 {
 
@@ -200,4 +204,29 @@ void MainWindow::resetAlarmTime()
         QListWidgetItem* item = new QListWidgetItem(ui->logListWidget);
         item->setText(rtc->errorString());
     }
+}
+
+void MainWindow::createActions()
+{
+    aboutAct = new QAction(trUtf8("&About"), this);
+    //aboutAct->setStatusTip(trUtf8("Show the application's About box"));
+    connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
+
+    aboutQtAct = new QAction(trUtf8("About &Qt"), this);
+    //aboutQtAct->setStatusTip(trUtf8("Show the Qt library's About box"));
+    connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+}
+
+void MainWindow::createMenus()
+{
+    helpMenu = menuBar()->addMenu(trUtf8("&Help"));
+    helpMenu->addAction(aboutAct);
+    helpMenu->addAction(aboutQtAct);
+}
+
+void MainWindow::about()
+{
+    QMessageBox::about(this, trUtf8("About"),
+                       trUtf8("QRtcAlarm\n\n"
+                              "Copyright (c) 2010 Egor Lynko"));
 }

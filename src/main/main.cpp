@@ -50,7 +50,12 @@ int main(int argc, char *argv[])
         app.installTranslator(&translator);
     }
 
+    QIcon appIcon(":/icon.png");
+    app.setWindowIcon(appIcon);
+
     MainWindow mainWin;
     mainWin.show();
+
+    QObject::connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
     return app.exec();
 }

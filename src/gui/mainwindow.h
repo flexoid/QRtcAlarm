@@ -38,6 +38,9 @@
 
 #include <QMainWindow>
 #include <QPropertyAnimation>
+#include <QAction>
+#include <QMenu>
+#include <QMessageBox>
 #include "../core/rtc.h"
 
 namespace Ui {
@@ -58,6 +61,13 @@ protected:
 private:
     Ui::MainWindow *ui;
 
+    void createActions();
+    void createMenus();
+
+    QMenu *helpMenu;
+    QAction *aboutAct;
+    QAction *aboutQtAct;
+
 private slots:
     void updateAlarmTime();
     void goToAlarmDate();
@@ -68,6 +78,7 @@ private slots:
     void setAlarmTime();
     void resetAlarmTime();
 
+    void about();
 };
 
 #endif // MAINWINDOW_H
