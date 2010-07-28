@@ -1,0 +1,4 @@
+#ifndef __REVISION_H
+#define __REVISION_H
+#define GIT_COMMIT_HASH "${GIT_COMMIT_HASH}"
+#endif

@@ -52,6 +52,19 @@ source_group ("Source Files" FILES ${SOURCES})
 source_group ("Generated Files" FILES ${MOC_SOURCES})
 source_group ("Resource Files" FILES ${QRC_SOURCES})
 
+# Generating "commit_hash.h" file with commit hash
+find_package(Git)
+if(GIT_FOUND)
+	if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../.git")
+		execute_process (
+			COMMAND ${GIT_EXECUTABLE} log -1 --pretty="%h"
+			OUTPUT_VARIABLE GIT_COMMIT_HASH
+			OUTPUT_STRIP_TRAILING_WHITESPACE)
+		string(REGEX REPLACE "\"" "" GIT_COMMIT_HASH ${GIT_COMMIT_HASH})
+	endif()
+endif()
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/commit_hash.h.in ${CMAKE_CURRENT_SOURCE_DIR}/commit_hash.h)
+
 add_executable (${PROJECT} ${HEADERS} ${SOURCES} ${UI_HEADERS} ${MOC_SOURCES} ${QRC_SOURCES} ${TRANSLATIONS})
 
 target_link_libraries (${PROJECT} ${LIBRARIES} ${QT_LIBRARIES})
