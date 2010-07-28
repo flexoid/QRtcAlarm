@@ -208,25 +208,29 @@ void MainWindow::resetAlarmTime()
 
 void MainWindow::createActions()
 {
-    aboutAct = new QAction(trUtf8("&About"), this);
+    aboutAct = new QAction(trUtf8("About"), this);
     //aboutAct->setStatusTip(trUtf8("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
-    aboutQtAct = new QAction(trUtf8("About &Qt"), this);
+    aboutQtAct = new QAction(trUtf8("About Qt"), this);
     //aboutQtAct->setStatusTip(trUtf8("Show the Qt library's About box"));
     connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 }
 
 void MainWindow::createMenus()
 {
-    helpMenu = menuBar()->addMenu(trUtf8("&Help"));
+    helpMenu = menuBar()->addMenu(trUtf8("Help"));
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(aboutQtAct);
 }
 
 void MainWindow::about()
 {
-    QMessageBox::about(this, trUtf8("About"),
-                       trUtf8("QRtcAlarm\n\n"
-                              "Copyright (c) 2010 Egor Lynko"));
+    QString aboutText = QString::fromUtf8("QRtcAlarm\n\n");
+    if (!QString(GIT_COMMIT_HASH).isEmpty())
+    {
+        aboutText += QString::fromUtf8("Commit hash: %1\n\n").arg(GIT_COMMIT_HASH);
+    }
+    aboutText += "Copyright (c) 2010 Egor Lynko";
+    QMessageBox::about(this, QString::fromUtf8("About"), aboutText);
 }

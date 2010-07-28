@@ -42,6 +42,7 @@
 #include <QMenu>
 #include <QMessageBox>
 #include "../core/rtc.h"
+#include "../commit_hash.h"
 
 namespace Ui {
     class MainWindow;
