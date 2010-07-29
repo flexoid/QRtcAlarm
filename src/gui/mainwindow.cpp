@@ -55,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->refreshButton, SIGNAL(clicked()), this, SLOT(updateAlarmTime()));
     connect(ui->calendarWidget, SIGNAL(clicked(QDate)), ui->dateTimeEdit, SLOT(setDate(QDate)));
+    connect(ui->calendarWidget, SIGNAL(clicked(QDate)), this, SLOT(setFocus()));
     connect(ui->dateTimeEdit, SIGNAL(dateChanged(QDate)), ui->calendarWidget, SLOT(setSelectedDate(QDate)));
 
     connect(ui->setAlarmTimeButton, SIGNAL(clicked()), this, SLOT(setAlarmTime()));
@@ -153,8 +154,9 @@ void MainWindow::goToCurrentMonth()
 
 void MainWindow::goToToday()
 {
-    QDate currentDate = QDate::currentDate();
-    ui->calendarWidget->setSelectedDate(currentDate);
+    ui->calendarWidget->setSelectedDate(QDate::currentDate());
+    ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
+    setFocus();
 }
 
 void MainWindow::setVisibleLog(bool visible)
@@ -231,4 +233,10 @@ void MainWindow::about()
     }
     aboutText += "Copyright (c) 2010 Egor Lynko";
     QMessageBox::about(this, QString::fromUtf8("About"), aboutText);
+}
+
+void MainWindow::setFocus()
+{
+    ui->dateTimeEdit->setFocus();
+    ui->dateTimeEdit->setSelectedSection(QDateTimeEdit::HourSection);
 }

@@ -41,6 +41,7 @@
 #include <QAction>
 #include <QMenu>
 #include <QMessageBox>
+#include <QLineEdit>
 #include "../core/rtc.h"
 #include "../commit_hash.h"
 
@@ -78,6 +79,7 @@ private slots:
     void showLog();
     void setAlarmTime();
     void resetAlarmTime();
+    void setFocus();
 
     void about();
 };
