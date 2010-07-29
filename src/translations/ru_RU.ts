@@ -68,6 +68,10 @@
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
+    <message>
+        <source>Go to today</source>
+        <translation>Перейти на сегодня</translation>
+    </message>
 </context>
 <context>
     <name>Rtc</name>

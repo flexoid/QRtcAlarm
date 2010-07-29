@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     createMenus();
 
     connect(ui->goToAlarmButton, SIGNAL(clicked()), this, SLOT(goToAlarmDate()));
+    connect(ui->goToCurrentMonthButton, SIGNAL(clicked()), this, SLOT(goToCurrentMonth()));
     connect(ui->goToTodayButton, SIGNAL(clicked()), this, SLOT(goToToday()));
 
     connect(ui->logButton, SIGNAL(toggled(bool)), this, SLOT(setVisibleLog(bool)));
@@ -144,10 +145,16 @@ void MainWindow::goToAlarmDate()
     ui->calendarWidget->setCurrentPage(alarmDate.year(), alarmDate.month());
 }
 
-void MainWindow::goToToday()
+void MainWindow::goToCurrentMonth()
 {
     QDate currentDate = QDate::currentDate();
     ui->calendarWidget->setCurrentPage(currentDate.year(), currentDate.month());
+}
+
+void MainWindow::goToToday()
+{
+    QDate currentDate = QDate::currentDate();
+    ui->calendarWidget->setSelectedDate(currentDate);
 }
 
 void MainWindow::setVisibleLog(bool visible)

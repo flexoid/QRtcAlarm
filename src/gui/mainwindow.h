@@ -72,6 +72,7 @@ private:
 private slots:
     void updateAlarmTime();
     void goToAlarmDate();
+    void goToCurrentMonth();
     void goToToday();
     void setVisibleLog(bool visible);
     void showLog();
