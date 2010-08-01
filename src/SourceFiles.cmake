@@ -13,7 +13,8 @@ set (FORMS
 	gui/ui/mainwindow.ui)
 
 set (LANGUAGES
-	ru_RU)
+	ru_RU
+	be_BY)
 	
 set (RESOURCES 
 	resources/resources.qrc)
