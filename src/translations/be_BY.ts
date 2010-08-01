@@ -64,7 +64,7 @@
     </message>
     <message>
         <source>%1 Alarm isn&apos;t set %2</source>
-        <translation>%1 Сігнал не устаноўлены %2</translation>
+        <translation>%1 Сігнал не ўстаноўлены %2</translation>
     </message>
     <message>
         <source>About</source>

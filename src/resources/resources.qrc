@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>../translations/ru_RU.qm</file>
+	<file>../translations/be_BY.qm</file>
         <file>icon.png</file>
     </qresource>
 </RCC>
