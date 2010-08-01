@@ -24,8 +24,7 @@ foreach (LANGUAGE ${LANGUAGES})
 	set (QM ${TRANSLATIONS_PATH}/${LANGUAGE}.qm)
 	set (TRANSLATIONS ${TRANSLATIONS} ${TS})
 	set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
-	add_custom_command (
-		OUTPUT ${TS}
+	execute_process (
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 		COMMAND ${QT_LUPDATE_EXECUTABLE} ${HEADERS} ${SOURCES} ${FORMS} -ts ${TS} -locations none)
 	add_custom_command (
@@ -46,11 +45,6 @@ elseif (CMAKE_COMPILER_IS_GNUCXX)
 else ()
 	message ("Unknown compiler")
 endif ()
-
-source_group ("Header Files" FILES ${HEADERS})
-source_group ("Source Files" FILES ${SOURCES})
-source_group ("Generated Files" FILES ${MOC_SOURCES})
-source_group ("Resource Files" FILES ${QRC_SOURCES})
 
 # Generating "commit_hash.h" file with commit hash
 find_package(Git)

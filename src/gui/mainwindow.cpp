@@ -83,11 +83,18 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
 
-    int fDay =  trUtf8("For translators: just enter number of the first day of the week in the field of translation, where 1 is Monday and 7 is Sunday").toInt();
-    if (fDay)
-    {
-        ui->calendarWidget->setFirstDayOfWeek(static_cast< Qt::DayOfWeek>(fDay));
-    }
+    int fDay =  QApplication::translate("Localization", "7",
+                                        "Just enter number of the first day of the "
+                                        "week in the field of translation, where 1 is Monday and 7 is Sunday",
+                                        QCoreApplication::UnicodeUTF8).toInt();
+    ui->calendarWidget->setFirstDayOfWeek(static_cast< Qt::DayOfWeek>(fDay));
+
+    QString transTimeFormatMessage = QApplication::translate("Localization", "yyyy-MM-dd hh:mm",
+                                                             "Set your time format or leave blank "
+                                                             "to use default format (yyyy-MM-dd hh:mm). "
+                                                             "Format description is in project wiki.",
+                                                             QCoreApplication::UnicodeUTF8);
+    ui->dateTimeEdit->setDisplayFormat(transTimeFormatMessage);
 
     updateAlarmTime();
 }
@@ -125,7 +132,6 @@ void MainWindow::updateAlarmTime()
     else
     {
         ui->calendarWidget->unmarkAlarmDate();
-        ui->calendarWidget->setSelectedDate(QDate::currentDate());
         ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
         if (rtc->error() == Rtc::AlarmIsNotSet)
         {
@@ -231,7 +237,16 @@ void MainWindow::about()
     {
         aboutText += QString::fromUtf8("Commit hash: %1\n\n").arg(GIT_COMMIT_HASH);
     }
-    aboutText += "Copyright (c) 2010 Egor Lynko";
+
+    aboutText += "Copyright (c) 2010 Egor Lynko\n";
+
+    QString transTranslatorNameText = QApplication::translate("Localization", "Egor Lynko",
+                                                      "Enter the name of the translator "
+                                                      "(i.e. yours) in English",
+                                                      QCoreApplication::UnicodeUTF8);
+    aboutText += trUtf8("Translator") + QString::fromUtf8(": ");
+    aboutText += transTranslatorNameText += QString::fromUtf8("\n\n");
+
     QMessageBox::about(this, QString::fromUtf8("About"), aboutText);
 }
 

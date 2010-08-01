@@ -3,6 +3,24 @@
 <TS version="2.0" language="ru_RU">
 <defaultcodec>UTF-8</defaultcodec>
 <context>
+    <name>Localization</name>
+    <message>
+        <source>7</source>
+        <comment>Just enter number of the first day of the week in the field of translation, where 1 is Monday and 7 is Sunday</comment>
+        <translation>1</translation>
+    </message>
+    <message>
+        <source>yyyy-MM-dd hh:mm</source>
+        <comment>Set your time format or leave blank to use default format (yyyy-MM-dd hh:mm). Format description is in project wiki.</comment>
+        <translation>dd.MM.yyyy hh:mm</translation>
+    </message>
+    <message>
+        <source>Egor Lynko</source>
+        <comment>Enter the name of the translator (i.e. yours) in English</comment>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>Go to alarm month</source>
@@ -13,16 +31,8 @@
         <translation>Перейти к текущему месяцу</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation type="obsolete">Настройки</translation>
-    </message>
-    <message>
         <source>Refresh</source>
         <translation>Обновить</translation>
-    </message>
-    <message>
-        <source>yyyy-MM-dd hh:mm</source>
-        <translation>dd.MM.yyyy hh:mm</translation>
     </message>
     <message>
         <source>Log window</source>
@@ -43,10 +53,6 @@
     <message>
         <source>Reset alarm</source>
         <translation>Сбросить сигнал</translation>
-    </message>
-    <message>
-        <source>For translators: just enter number of the first day of the week in the field of translation, where 1 is Monday and 7 is Sunday</source>
-        <translation>1</translation>
     </message>
     <message>
         <source>%1 Alarm is set %2</source>
@@ -71,6 +77,10 @@
     <message>
         <source>Go to today</source>
         <translation>Перейти на сегодня</translation>
+    </message>
+    <message>
+        <source>Translator</source>
+        <translation>Переводчик</translation>
     </message>
 </context>
 <context>

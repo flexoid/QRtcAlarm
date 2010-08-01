@@ -50,7 +50,7 @@
       <item row="0" column="3">
        <widget class="QDateTimeEdit" name="dateTimeEdit">
         <property name="displayFormat">
-         <string>yyyy-MM-dd hh:mm</string>
+         <string notr="true">yyyy-MM-dd hh:mm</string>
         </property>
         <property name="calendarPopup">
          <bool>false</bool>
