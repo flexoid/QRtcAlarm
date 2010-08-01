@@ -111,7 +111,7 @@
     </message>
     <message>
         <source>New time isn&apos;t written in %1.</source>
-        <translation>Новаое время не было записано в %1.</translation>
+        <translation>Новое время не было записано в %1.</translation>
     </message>
 </context>
 </TS>
