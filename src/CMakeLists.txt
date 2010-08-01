@@ -6,7 +6,7 @@ set (PROJECT
 include (SourceFiles.cmake)
 
 set (TRANSLATIONS_PATH 
-	./translations)
+	translations)
 
 set (EXECUTABLE_OUTPUT_PATH ../bin)
 
@@ -20,11 +20,18 @@ qt4_wrap_cpp (MOC_SOURCES ${HEADERS})
 qt4_wrap_ui (UI_HEADERS ${FORMS})
 
 foreach (LANGUAGE ${LANGUAGES})
-	set (TS ${TRANSLATIONS_PATH}/${LANGUAGE}.ts)
-	set (QM ${TRANSLATIONS_PATH}/${LANGUAGE}.qm)
+	set (TS ${CMAKE_CURRENT_SOURCE_DIR}/${TRANSLATIONS_PATH}/${LANGUAGE}.ts)
+	set (QM ${CMAKE_CURRENT_SOURCE_DIR}/${TRANSLATIONS_PATH}/${LANGUAGE}.qm)
 	set (TRANSLATIONS ${TRANSLATIONS} ${TS})
 	set (TRANSLATIONS_BINARY ${TRANSLATIONS_BINARY} ${QM})
-	execute_process (
+	if (NOT EXISTS ${TS})
+		message(${TS})
+		execute_process (
+			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+			COMMAND ${QT_LUPDATE_EXECUTABLE} ${HEADERS} ${SOURCES} ${FORMS} -ts ${TS} -locations none)
+	endif()
+	add_custom_command (
+		OUTPUT ${TS}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 		COMMAND ${QT_LUPDATE_EXECUTABLE} ${HEADERS} ${SOURCES} ${FORMS} -ts ${TS} -locations none)
 	add_custom_command (
