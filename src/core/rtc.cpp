@@ -39,9 +39,12 @@ Rtc* Rtc::_self = 0;
 
 Rtc::Rtc()
 {
-    QString rtc_root = QString::fromUtf8("/sys/class/rtc/rtc0/");
-    wakealarm_sysfile = rtc_root + QString::fromUtf8("wakealarm");
-    since_epoch_sysfile = rtc_root + QString::fromUtf8("since_epoch");
+    rtc_root = QString::fromUtf8("/sys/class/rtc");
+    rtc_device = QString::fromUtf8("rtc0");
+    wakealarm_sysfile = rtc_root + QString::fromUtf8("/") + rtc_device +
+            QString::fromUtf8("/") + QString::fromUtf8("wakealarm");
+    since_epoch_sysfile = rtc_root + QString::fromUtf8("/") + rtc_device +
+            QString::fromUtf8("/") + QString::fromUtf8("since_epoch");
 }
 
 int Rtc::getAlarmTime(QDateTime& dateTime)

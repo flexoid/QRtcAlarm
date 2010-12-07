@@ -91,6 +91,9 @@ private:
     Qt::TimeSpec timeSpec;
     rtcError err;
     QString errString;
+
+    QString rtc_root;
+    QString rtc_device;
     QString wakealarm_sysfile;
     QString since_epoch_sysfile;
 
